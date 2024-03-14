@@ -1,0 +1,12 @@
+apiVersion: v2
+name: kubo
+description: Install kubo for ipfs service.
+version: 1.0.0
+kubeVersion: < 1.28.0-0
+home: https://github.com/GitDataAI
+keywords:
+  - jiaozifs kubo
+sources:
+  - https://github.com/GitDataAI/ipfs_chart
+maintainers:
+  - name: jiaozifs team

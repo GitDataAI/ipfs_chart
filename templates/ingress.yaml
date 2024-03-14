@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: kubo-ingress
+  annotations:
+    meta.helm.sh/release-name: kubo-ingress
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
+  labels:
+    apptype: kubo-ingress
+    app.kubernetes.io/managed-by: Helm
+    heritage: Helm
+    release:  kubo-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: kubo.jiaozifs.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubo-service
+            port:
+              number: 5001 # 指定Service的端口号

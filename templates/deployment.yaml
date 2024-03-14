@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubo-deployment
+  labels:
+    app: kubo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kubo
+  template:
+    metadata:
+      labels:
+        app: kubo
+    spec:
+      containers:
+      - name: kubo-contianer
+        image: ipfs/kubo:latest
+        environment:
+          - IPFS_PATH=/data/ipfs
+        ports:
+        - containerPort: 5001
+        volumeMounts:
+          - name: kubo-data
+            mountPath: "/root/.drand"
+      volumes:
+        - name: kubo-data
+          persistentVolumeClaim:
+            claimName: {{ .Values.claim_name }}
