@@ -4,3 +4,4 @@
 replicas: 1
 tag: v1.5.11
 claim_name: kube-data
+class_name: nfs-client

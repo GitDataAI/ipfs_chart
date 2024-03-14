@@ -23,7 +23,7 @@ spec:
         - containerPort: 5001
         volumeMounts:
           - name: kubo-data
-            mountPath: "/root/.drand"
+            mountPath: "/data/ipfs"
       volumes:
         - name: kubo-data
           persistentVolumeClaim:
