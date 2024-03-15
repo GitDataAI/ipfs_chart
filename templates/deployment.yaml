@@ -21,6 +21,7 @@ spec:
           - IPFS_PATH=/data/ipfs
         ports:
         - containerPort: 5001
+        - containerPort: 8080
         volumeMounts:
           - name: kubo-data
             mountPath: "/data/ipfs"

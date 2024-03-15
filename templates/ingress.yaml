@@ -26,3 +26,13 @@ spec:
             name: kubo-service
             port:
               number: 5001 # 指定Service的端口号
+  - host: ipfsgateway.jiaozifs.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kubo-gateway-service
+            port:
+              number: 8080 # 指定Service的端口号
